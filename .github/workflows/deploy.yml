@@ -31,9 +31,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        env:
-          VITE_API_URL: ${{ vars.VITE_API_URL }}
-          VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
         run: npm run build
 
       - name: Setup Pages
