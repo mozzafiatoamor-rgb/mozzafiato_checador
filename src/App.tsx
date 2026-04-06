@@ -149,7 +149,22 @@ export default function App() {
           </div>
         )}
 
-        {screen === 'employees' && !loading && (
+        {screen === 'employees' && !loading && error && (
+          <div className="h-full flex items-center justify-center">
+            <div className="text-center p-8 bg-red-900/30 rounded-2xl border border-red-700 max-w-lg mx-auto">
+              <p className="text-red-300 text-xl font-semibold mb-2">⚠️ Error de conexión</p>
+              <p className="text-red-200 text-sm mb-4">{error}</p>
+              <button
+                onClick={loadEmployees}
+                className="px-6 py-2 bg-mozzafiato-gold text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
+              >
+                Reintentar
+              </button>
+            </div>
+          </div>
+        )}
+
+        {screen === 'employees' && !loading && !error && (
           <EmployeeList
             employees={employees}
             onSelect={handleSelectEmployee}
