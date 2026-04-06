@@ -1,12 +1,9 @@
 import type { Employee, CheckRecord } from './types';
 
-const API_URL = import.meta.env.VITE_API_URL || '';
+// URL del Apps Script backend
+const API_URL = 'https://script.google.com/macros/s/AKfycbznDLQva9sW2FwG0ML0-MIqr5ht8OQo_s-6-tuVi6vz9bzQjyQdWX83Qk9iKiUUlpIKFw/exec';
 
 async function apiCall<T>(action: string, params: Record<string, string> = {}): Promise<T> {
-  if (!API_URL) {
-    throw new Error('API_URL no configurada. Verifica VITE_API_URL en las variables de GitHub.');
-  }
-
   const body = JSON.stringify({ action, ...params });
 
   const response = await fetch(API_URL, {
