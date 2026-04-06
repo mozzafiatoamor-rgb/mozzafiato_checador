@@ -9,11 +9,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   </React.StrictMode>
 );
 
-// Registro manual de Service Worker (sin virtual:pwa-register)
+// Registro manual de Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    const basePath = import.meta.env.VITE_BASE_PATH || '/checador-mozzafiato/';
-    navigator.serviceWorker.register(`${basePath}sw.js`).catch((err) => {
+    navigator.serviceWorker.register('/mozzafiato_checador/sw.js').catch((err) => {
       console.warn('SW registration failed:', err);
     });
   });
